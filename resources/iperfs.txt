@@ -1,0 +1,3 @@
+h6 iperf -e -i 0.5 -c h1 -p 5555 -u -S 0x10 -t 10 -b 1000pps -l 1470B, 30ms, 1%
+h3 iperf -e -i 0.5 -c h1 -p 5555 -u -S 0x10 -t 10 -b 1600pps -l 1470B, 20ms, 0%
+h6 iperf -e -i 0.5 -c h1 -p 6666 -N -S 0x08 -n 50M -b 100m -w 95K, 35Mbps

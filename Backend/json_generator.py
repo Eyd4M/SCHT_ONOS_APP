@@ -43,6 +43,6 @@ def add_entry_to_conf(single_conf_json, json_obj):
 
 # Function to create a main json file in a destined location - to this file the main conf_json object will be added
 def create_main_json_file(json_obj, path):
-    f = open(f'{path}', 'w')
+    f = open(f'{path}\\config_json.json', 'w')
     f.write(json.dumps(json_obj))
     f.close()

@@ -5,8 +5,8 @@ conf_json = {'flows': []}
 
 
 # Function to generate a single switch flow config JSON; returns an object
-# Example parameters: dev_id = 1, out_port = 1, dest_ip = 10.0.0.1, l4_type = tcp, port = 5555
-def generate_single_json(dev_id, out_port, dest_ip, l4_type, port):
+# Example parameters: dev_id = 1, out_port = 1, dest_ip = 10.0.0.1, l4_type = tcp, l4_port = 5555
+def generate_single_json(dev_id, out_port, dest_ip, l4_type, l4_port):
     single_conf_json = {
         "priority": 40000,
         "timeout": 0,
@@ -28,7 +28,7 @@ def generate_single_json(dev_id, out_port, dest_ip, l4_type, port):
                 },
                 {
                     "type": f"{l4_type.upper()}_DST",
-                    f"{l4_type}Port": {port}
+                    f"{l4_type}Port": {l4_port}
                 },
                 {
                     "type": "IPV4_DST",

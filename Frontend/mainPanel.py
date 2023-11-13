@@ -71,6 +71,7 @@ class NetworkConfigurator(QWidget):
         self.status_label.setText("Configuring Optimal Network")
 
     def view_config_file(self):
+        config_file_path = ""
         if hasattr(self, config_file_path) and self.config_file_path:
             subprocess.Popen(['notepad.exe', self.config_file_path])
             self.status_label.setStyleSheet("QLabel { font-size: 20px; }")

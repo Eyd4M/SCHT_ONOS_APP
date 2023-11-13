@@ -10,6 +10,10 @@ def read_iperf(file_path):
 
             #Dictionary for storing parameters
             params = {}
+            if "-u" in line:
+                params['UDP'] = True
+            else:
+                params['UDP'] = False
 
             #it goes through words and and parameters into dictionary
             i = 0
@@ -34,5 +38,4 @@ def read_iperf(file_path):
 
     df = pd.DataFrame(data)
     return df
-
 

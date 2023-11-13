@@ -1,4 +1,4 @@
-import read_topology_csv as read_csv
+from Backend import read_topology_csv as read_csv
 
 
 def get_network_data_for_nx_graph(file_path):

@@ -35,5 +35,4 @@ def read_iperf(file_path):
     df = pd.DataFrame(data)
     return df
 
-print(read_iperf(r'C:\Users\Piotrek\PycharmProjects\SCHT_ONOS_APP2\resources\iperfs.txt'))
 

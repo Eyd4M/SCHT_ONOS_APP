@@ -3,9 +3,9 @@ import networkx as nx
 from Backend import read_topology_csv as read_csv
 
 
-def get_network_data_for_nx_graph(file_path):
+def get_network_data_for_nx_graph(csv_data):
     # Getting network data from a .csv file
-    conns = read_csv.read_topology(file_path)
+    conns = csv_data
 
     # Variable for a new formatted data to put in a NetworkX graph
     formatted_conns = []

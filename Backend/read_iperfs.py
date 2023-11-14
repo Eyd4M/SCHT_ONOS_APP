@@ -15,9 +15,6 @@ def read_iperf(file_path):
             else:
                 params['UDP'] = False
 
-            if words[0] in line:
-                params['src'] = words[0]
-
             #it goes through words and and parameters into dictionary
             i = 0
             while i < len(words):

@@ -1,3 +1,5 @@
+import networkx as nx
+
 from Backend import read_topology_csv as read_csv
 
 
@@ -37,6 +39,15 @@ def get_port_data(file_path, node1, node2):
     port_data = tuple([searched_link.loc[0]['Port1'], searched_link.loc[0]['Port2']])
 
     return port_data
+
+def set_switch_ids(graph):
+    i = 1
+    nodes = graph.nodes
+    for node in nodes:
+        attr = {f"{node}": {"id": i}}
+        nx.set_node_attributes(graph, attr)
+        i += 1
+
 
 
 # print(get_network_data_for_nx_graph(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv'))

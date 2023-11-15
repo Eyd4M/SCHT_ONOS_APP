@@ -30,15 +30,20 @@ def get_network_data_for_nx_graph(csv_data):
     return formatted_conns
 
 
-def get_port_data(file_path, node1, node2):
+def get_port_data(csv_data, node1, node2):
     # Getting network data from a .csv file
-    conns = read_csv.read_topology(file_path)
-
+    conns = csv_data
     # Getting port numbers for a link with searched nodes
-    searched_link = conns.loc[(conns['Node1'] == node1) & (conns['Node2'] == node2)]
-    port_data = tuple([searched_link.loc[0]['Port1'], searched_link.loc[0]['Port2']])
+
+    searched_link = conns.loc[(conns['Node1'] == node1) & (conns['Node2'] == node2)].reset_index()
+    searched_link_rev = conns.loc[(conns['Node1'] == node2) & (conns['Node2'] == node1)].reset_index()
+    if not searched_link.empty:
+        port_data = tuple([searched_link.loc[0]['Port1'], searched_link.loc[0]['Port2']])
+    else:
+        port_data = tuple(reversed([searched_link_rev.loc[0]['Port1'], searched_link_rev.loc[0]['Port2']]))
 
     return port_data
+
 
 def set_switch_ids(graph):
     i = 1
@@ -47,8 +52,6 @@ def set_switch_ids(graph):
         attr = {f"{node}": {"id": i}}
         nx.set_node_attributes(graph, attr)
         i += 1
-
-
 
 # print(get_network_data_for_nx_graph(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv'))
 # print(get_port_data(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv', 'Londyn', 'Oslo'))

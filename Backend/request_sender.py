@@ -16,7 +16,7 @@ def post_config(ip, json_file):
     url = f'http://{ip}:8181/onos/v1/flows'
     r = requests.post(url, json=j_data, auth=AUTH, headers=HEADERS_POST)
 
-    if r.text == '':
+    if r.status_code == 200:
         print("Konfiguracja powiodła się")
     else:
         print(r.text)

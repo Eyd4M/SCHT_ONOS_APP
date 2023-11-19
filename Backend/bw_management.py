@@ -1,4 +1,3 @@
-import networkx as nx
 
 
 def update_link_bandwidth(graph, path, single_iperf, iperf_number, rtt):

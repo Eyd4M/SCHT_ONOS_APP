@@ -36,7 +36,6 @@ def configure_network(csv_file_path, iperf_file_path, ip, root_dir):
 
     # For each iperf stream
     for i in range(iperf_df.shape[0]):
-        try:
             # Get node names by host ids from iperf
             node1_id = int(iperf_df.loc[i]['start'][1:])
             node2_id = int(iperf_df.loc[i]['c'][1:])
@@ -51,7 +50,6 @@ def configure_network(csv_file_path, iperf_file_path, ip, root_dir):
             rtt = path_data[1]
             # Update bandwidths on the links of the shortest path
             bw_management.update_link_bandwidth(graph, path, iperf_df.loc[i:i], i, rtt)
-
             # Set up variables for JSON config creation
             if iperf_df.loc[i]['UDP'] == True:
                 l4_type = 'udp'
@@ -100,8 +98,7 @@ def configure_network(csv_file_path, iperf_file_path, ip, root_dir):
 
             # Save all config to .json file
             json_generator.create_main_json_file(conf_json, json_file_path)
-        except:
-            pass
+
 
     # Send configuration file to ONOS
     request_sender.post_config(ip, json_file_path)

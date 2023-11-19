@@ -8,7 +8,7 @@ def generate_single_json(dev_id, out_port, dest_ip, l4_type, l4_port):
         "priority": 40000,
         "timeout": 0,
         "isPermanent": 'true',
-        "deviceId": f"of:000000000000000{dev_id}",
+        "deviceId": f"of:000000000000000{'a' if dev_id == 10 else dev_id}",
         "treatment": {
             "instructions": [
                 {
@@ -47,7 +47,7 @@ def generate_single_return_json(dev_id, out_port, dest_ip, l4_type, l4_port):
         "priority": 40000,
         "timeout": 0,
         "isPermanent": 'true',
-        "deviceId": f"of:000000000000000{dev_id}",
+        "deviceId": f"of:000000000000000{'a' if dev_id == 10 else dev_id}",
         "treatment": {
             "instructions": [
                 {
@@ -86,7 +86,7 @@ def generate_host_flow_json(dev_id, out_port, dest_ip):
         "priority": 40000,
         "timeout": 0,
         "isPermanent": 'true',
-        "deviceId": f"of:000000000000000{dev_id}",
+        "deviceId": f"of:000000000000000{'a' if dev_id == 10 else dev_id}",
         "treatment": {
             "instructions": [
                 {

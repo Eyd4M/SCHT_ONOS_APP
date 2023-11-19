@@ -16,22 +16,4 @@ def find_best_path(graph, node1, node2):
             rtt += delay[edge]
     rtt *= 2
 
-    # path_edges = list(zip(path, path[1:]))
-    #
-    # # Create a list of all edges, and assign colors based on whether they are in the shortest path or not
-    # edge_colors = [
-    #     "red" if edge in path_edges or tuple(reversed(edge)) in path_edges else "black"
-    #     for edge in graph.edges()
-    # ]
-    #
-    # # Visualize the graph
-    # pos = nx.spring_layout(graph)
-    # nx.draw_networkx_nodes(graph, pos)
-    # nx.draw_networkx_edges(graph, pos, edge_color=edge_colors)
-    # nx.draw_networkx_labels(graph, pos)
-    # nx.draw_networkx_edge_labels(
-    #    graph, pos, edge_labels={(u, v): d["bandwidth"] for u, v, d in graph.edges(data=True)}
-    # )
-    #
-    # plt.show()
     return path, rtt

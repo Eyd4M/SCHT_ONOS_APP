@@ -133,7 +133,7 @@ class NetworkConfigurator(QWidget):
     def configure_network(self):
         self.status_label.setStyleSheet("QLabel { font-size: 20px; }")
         self.status_label.setText("Configuring Optimal Network")
-        print(configure_network(network_file_path, streams_file_path, ip, root_dir).edges)
+        configure_network(network_file_path, streams_file_path, ip, root_dir)
 
     def view_config_file(self):
         global json_file_path

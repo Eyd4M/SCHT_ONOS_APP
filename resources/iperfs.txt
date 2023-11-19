@@ -1,8 +1,8 @@
-h6 iperf -e -i 0.5 -c h1 -p 5555 -u -S 0x10 -t 10 -b 1000pps -l 1470B -k1 30ms
-h3 iperf -e -i 0.5 -c h1 -p 5555 -u -S 0x10 -t 10 -b 1600pps -l 1470B -k1 20ms
+h6 iperf -e -i 0.5 -c h1 -p 1111 -u -S 0x10 -t 10 -b 1000pps -l 1470B -k1 30ms
+h3 iperf -e -i 0.5 -c h1 -p 2222 -u -S 0x10 -t 10 -b 1600pps -l 1470B -k1 20ms
+h6 iperf -e -i 0.5 -c h1 -p 3333 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
+h6 iperf -e -i 0.5 -c h1 -p 4444 -N -S 0x08 -n 50M -b 10m -w 95K -k1 35Mbps
+h6 iperf -e -i 0.5 -c h1 -p 5555 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
 h6 iperf -e -i 0.5 -c h1 -p 6666 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
-h6 iperf -e -i 0.5 -c h1 -p 6666 -N -S 0x08 -n 50M -b 10m -w 95K -k1 35Mbps
-h6 iperf -e -i 0.5 -c h1 -p 6666 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
-h6 iperf -e -i 0.5 -c h1 -p 6666 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
-h10 iperf -e -i 0.5 -c h6 -p 5555 -u -S 0x10 -t 10 -b 1600pps -l 1470B -k1 20ms
-h4 iperf -e -i 0.5 -c h7 -p 6666 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps
+h10 iperf -e -i 0.5 -c h6 -p 7777 -u -S 0x10 -t 10 -b 1600pps -l 1470B -k1 20ms
+h4 iperf -e -i 0.5 -c h7 -p 8888 -N -S 0x08 -n 50M -b 100m -w 95K -k1 35Mbps

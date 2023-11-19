@@ -12,7 +12,6 @@ from Backend import request_sender
 # Constants:
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 IP = '192.168.1.4'
-#IP = '192.168.43.116'
 CONF_FILE = 'conf.json'
 
 
@@ -38,7 +37,6 @@ def configure_network(csv_file_path, iperf_file_path):
 
     # For each iperf stream
     for i in range(iperf_df.shape[0]):
-        print(iperf_df.loc[i:i])
         # Get node names by host ids from iperf
         node1_id = int(iperf_df.loc[i]['start'][1:])
         node2_id = int(iperf_df.loc[i]['c'][1:])
@@ -49,10 +47,9 @@ def configure_network(csv_file_path, iperf_file_path):
                 node2 = node
 
         # Find the best possible path between hosts mentioned in iperf
-        path_data = best_path.find_best_path(graph, node1, node2, iperf_df.loc[i:i], i)
+        path_data = best_path.find_best_path(graph, node1, node2)
         path = path_data[0]
         rtt = path_data[1]
-        print(path)
 
         # Update bandwidths on the links of the shortest path
         bw_management.update_link_bandwidth(graph, path, iperf_df.loc[i:i], i, rtt)
@@ -66,7 +63,6 @@ def configure_network(csv_file_path, iperf_file_path):
         src_ip = f'10.0.0.{node1_id}'
         l4_port = iperf_df.loc[i]['p']
 
-
         # Generate switch to close host flow
         for node in graph.nodes:
             if node in path:
@@ -74,7 +70,6 @@ def configure_network(csv_file_path, iperf_file_path):
                 self_host_ip = f"10.0.0.{node_src_id}"
                 host_flow = json_generator.generate_host_flow_json(node_src_id, 1, self_host_ip)
                 json_generator.add_entry_to_conf(host_flow, conf_json)
-
 
         # Generate Jsons for best path config - from client to server
         j = 0
@@ -86,7 +81,6 @@ def configure_network(csv_file_path, iperf_file_path):
             node_dest = path[j + 1]
             j += 1
             out_port = int(data_format.get_port_data(network_data, node_src, node_dest)[0])
-            print(out_port)
 
             single_json = json_generator.generate_single_json(node_src_id, out_port, dest_ip, l4_type, l4_port)
             json_generator.add_entry_to_conf(single_json, conf_json)
@@ -103,10 +97,7 @@ def configure_network(csv_file_path, iperf_file_path):
             out_port = int(data_format.get_port_data(network_data, node_src, node_dest)[0])
 
             single_json = json_generator.generate_single_return_json(node_src_id, out_port, src_ip, l4_type, l4_port)
-            print(single_json)
             json_generator.add_entry_to_conf(single_json, conf_json)
-
-
 
         # Save all config to .json file
         json_generator.create_main_json_file(conf_json, json_file_path)
@@ -117,5 +108,5 @@ def configure_network(csv_file_path, iperf_file_path):
     return graph
 
 
-print(configure_network(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv',
-                        r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\iperfs.txt').edges.data())
+if __name__ == "__main__":
+    configure_network(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv', r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\iperfs.txt')

@@ -53,5 +53,3 @@ def set_switch_ids(graph):
         nx.set_node_attributes(graph, attr)
         i += 1
 
-# print(get_network_data_for_nx_graph(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv'))
-# print(get_port_data(r'C:\Users\EydaM\Desktop\Studia\Sem3\SCHT\LAB2\SCHT_ONOS_APP\resources\NetworkData.csv', 'Londyn', 'Oslo'))

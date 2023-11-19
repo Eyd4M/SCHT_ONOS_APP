@@ -21,6 +21,9 @@ def post_config(ip, json_file):
     except Exception as err:
         print(err)
     else:
-        print("Konfiguracja powiodła się")
+        if r.status_code == 200:
+            print("Konfiguracja powiodła się")
+        else:
+            print("Konfiguracja nie powiodła się")
 
     f.close()

@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 from requests.auth import HTTPBasicAuth
 
 # Constants needed for sending a proper HTTP POST request to ONOS
@@ -14,10 +15,12 @@ def post_config(ip, json_file):
     j_data = json.loads(f.read())
 
     url = f'http://{ip}:8181/onos/v1/flows'
-    r = requests.post(url, json=j_data, auth=AUTH, headers=HEADERS_POST)
-
-    if r.status_code == 200:
-        print("Konfiguracja powiodła się")
+    try:
+        r = requests.post(url, json=j_data, auth=AUTH, headers=HEADERS_POST)
+        r.raise_for_status()
+    except Exception as err:
+        print(err)
     else:
-        print(r.text)
+        print("Konfiguracja powiodła się")
+
     f.close()
